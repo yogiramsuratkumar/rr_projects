@@ -7,7 +7,7 @@ body, html {
 }
 
 .bgimg {
-  background-image: url('/w3images/forestbridge.jpg');
+  background-image: url('https://img.freepik.com/free-photo/happy-child-orange-sweater-plays-with-feather-floor_8353-182.jpg?w=900&t=st=1681241589~exp=1681242189~hmac=2c4522f09a58b927c0d9030abc7eb2c4dbc1bb594803dfea77231c8abcec90bf');
   height: 100%;
   background-position: center;
   background-size: cover;

@@ -3,8 +3,8 @@ pipeline{
    stages{
     stage('Fetch code'){
      steps{
-	 git branch: 'rr_projects', url:'https://github.com/yogiramsuratkumar/rr_projects.git'
-	     credentialsId :"gitsec"
+	 git url:'https://github.com/yogiramsuratkumar/rr_projects.git', branch: 'rr_projects',
+	 credentialsId :"gitsec"
      }
    }
     stage('Build code'){

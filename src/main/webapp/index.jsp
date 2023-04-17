@@ -11,10 +11,9 @@
 
 <body>
 	<nav>
-		<div class="heading">Landing Page</div>
+		<div class="heading">You didn&apos;t not get</div>
 		<span class="sideMenuButton" onclick="openNavbar()">☰
 		</span>
-
 		<div class="navbar">
 			<ul>
 				<li><a href="#Home">Home</a></li>
@@ -24,13 +23,9 @@
 		</div>
 	</nav>
 
-	<!-- Side navigation bar for
-		responsive website -->
-	<div class="sideNavigationBar"
-		id="sideNavigationBar">
-		<a href="#" class="closeButton"
-			onclick="closeNavbar()">
-		</a>
+	<!-- Side navigation bar for responsive website -->
+	<div class="sideNavigationBar" id="sideNavigationBar">
+		<a href="#" class="closeButton" onclick="closeNavbar()"></a>
 		<a href="#">Home</a>
 		<a href="#">About</a>
 		<a href="#">Sign Up</a>
@@ -45,135 +40,18 @@
 			</button>
 		</div>
 		<div class="side2">
-			<img src=
-"https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220401124017/HTML-Tutorial.png"
-				width="500">
+			<img src="https://sampletesting87.s3.ap-south-1.amazonaws.com/photo.jpg">
 		</div>
+		<div > </div>
 	</div>
 
-	<section class="about" id="My Projects">
-		<div class="content">
-			<div class="title">
-				<span>Courses</span>
-			</div>
-			<div class="boxes">
-				<div class="box">
-					<div class="topic">
-						<a href="" target="_blank">
-							DSA
-						</a>
-					</div>
-					<p>
-						The term DSA stands for Data
-						Structures and Algorithms. As
-						the name itself suggests, it
-						is a combination of two
-						separate yet interrelated
-						topics.
-					</p>
-				</div>
-				<div class="box">
 
-					<div class="topic">
-						<a href="" target="_blank">
-							HTML
-						</a>
-					</div>
-					<p>
-						HTML stands for HyperText
-						Markup Language. It is used
-						to design web pages using
-						the markup language.
-					</p>
-				</div>
-
-				<div class="box">
-					<div class="topic">
-						<a href="" target="_blank">
-							Javascript
-						</a>
-					</div>
-					<p>
-						JavaScript (JS) is the most
-						popular lightweight, interpreted
-						compiled programming language.
-					</p>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="contact" id="contact">
-		<div class="content">
-			<div class="title"><span>Sign Up</span></div>
-			<div class="contactMenu">
-				<div class="input1">
-					<div class="label1">Your Name</div>
-					<div class="input2">
-						<input type="text"
-							placeholder="Enter your Name here">
-					</div>
-					<div class="label1">
-						<label>Your Email</label>
-					</div>
-					<div class="input2">
-						<input type="text"
-							placeholder="Enter your Email here">
-					</div>
-					<div class="label1">
-						<label>Your Password</label>
-					</div>
-					<div class="input2">
-						<input type="text"
-							placeholder="Enter your Password here">
-					</div>
-					<div class="button">
-						<button>Sign Up</button>
-					</div>
-				</div>
-				<div class="input3">
-					<div class="rightside1">
-						<div class="title1">
-							<span>
-								Contact Us
-							</span>
-						</div>
-						<div class="content1">
-							A-143, 9th Floor, Sovereign
-							Corporate Tower, Sector-136,
-							Noida, Uttar Pradesh - 201305
-						</div>
-						<div class="title1">
-							<span>More Information</span>
-						</div>
-						<div class="content1">
-							Greetings to all the Geeks out there!
-							We welcome you to the platform where we
-							consistently strive to offer the best
-							of education. This platform has been
-							designed for every geek wishing to
-							expand their knowledge, share their
-							knowledge and is ready to grab their
-							dream job. We have millions of articles,
-							live as well as online courses, thousands
-							of tutorials and much more just for the
-							geek inside you.Thank you for choosing
-							and supporting us!
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 	<!-- Footer section -->
 	<footer>
 		<div class="footer">
 			<span>
 				Created By
-				<a href="https://www.geeksforgeeks.org/"
-					target="_blank">
-					GeeksforGeeks
-				</a>
+				<a style="font-weight: bold;" href="">Rocking Ravi creative works</a>
 			</span>
 		</div>
 	</footer>
@@ -183,6 +61,12 @@
 </html>
 
 <style>
+img{
+  border-radius: 18%;
+
+  }
+
+
 * {
 	padding: 0;
 	margin: 0;
@@ -376,21 +260,7 @@ section .topic a {
 	margin-bottom: 10px;
 }
 
-.about .boxes {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-}
 
-.about .boxes .box {
-	margin: 10px 20px;
-	max-width: calc(100% / 3 - 50px);
-	text-align: center;
-	border-radius: 12px;
-	padding: 30px 10px;
-	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
-	cursor: default;
-}
 
 /* Contact Page */
 
@@ -492,18 +362,17 @@ footer {
 	background: var(--primary-color);
 	padding: 15px 0;
 	text-align: center;
-	font-family: "Poppins", sans-serif;
-}
+	font-family: "Poppins", sans-serif;}
 
 footer .footer span {
 	font-size: 17px;
 	font-weight: 400;
-	color: var(--white-color);
+
 }
 
 footer .footer span a {
 	font-weight: 500;
-	color: var(--white-color);
+	color: #006400;
 }
 
 footer .footer span a:hover {
@@ -531,6 +400,7 @@ footer .footer span a:hover {
 	.side2 img {
 		width: 95%;
 		height: 90%;
+        overflow:hidden;
 	}
 }
 
@@ -542,20 +412,10 @@ footer .footer span a:hover {
 	section .topic a {
 		font-size: 20px;
 	}
-
 	section .topic p {
 		font-size: 5px;
 	}
 
-	.about .boxes {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-
-	.about .boxes .box {
-		max-width: 70%;
-	}
 }
 </style>
 

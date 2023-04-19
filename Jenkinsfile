@@ -13,7 +13,7 @@ pipeline{
      }
 	 post{
 	  success{
-	   echo "=======build completed======"
+	   echo "=======build completed test======"
 	  }
 	 }
    }  

@@ -191,7 +191,7 @@ html {
 .container {
   margin-inline: auto;
   margin: auto; /* fallback for margin-inline */
-  padding: 0 10px;
+  padding: 0 15px;
 }
 
 .btn {
@@ -697,8 +697,9 @@ footer .wrapper { text-align: center; }
 
 
 
-  *
+  /**
    * FOOTER
+   */
 
   footer .container {
     padding: var(--py) 30px;
@@ -903,7 +904,7 @@ footer .wrapper { text-align: center; }
   .main .container {
     display: grid;
     grid-template-columns: 5fr 2fr;
-    gap: 10px;
+    gap: 60px;
   }
 
 

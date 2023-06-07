@@ -379,7 +379,9 @@ header .btn-group {
   text-align: center;
 }
 
-.hero .right { display: none; }
+.hero .right {
+display: left;
+}
 
 
 
@@ -843,9 +845,9 @@ footer .wrapper { text-align: center; }
   }
 
   .hero .right {
-    position: relative;
-    display:         flex;
-    justify-content: center;
+    position: left;
+    display:  flex;
+    justify-content: left;
     align-items:     center;
   }
 

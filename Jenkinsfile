@@ -7,6 +7,10 @@ pipeline{
        NEXUS_REPOSITORY="Star-Blog-release"
        NEXUS_REPO_ID="Star-Blog-release"
        NEXUS_CREDENTIALS_ID="nexus_login"
+       SNAP_REPO="star-blog-snapshot"
+       RELEASE_REPO="Star-Blog-release"
+       CENTRAL_REPO="Star-Blog-maven-central"
+       NEXUS_GRP_REPO="star-blog-maven-group"
         }
    stages{
     stage('Fetch code'){
@@ -17,7 +21,7 @@ pipeline{
    }
     stage('Build code'){
      steps{
-	  sh 'mvn clean install -DskipTests'
+	  sh 'mvn -s settings.xml -DskipTests install'
      }
 	 post{
 	  success{

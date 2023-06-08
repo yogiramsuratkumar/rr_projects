@@ -3,7 +3,7 @@ pipeline{
     environment{
        NEXUS_VERSION= "3.54.1-01"
        NEXUS_PROTOCOL= "http"
-       NEXUS_URL="3.111.31.168:8081"
+       NEXUS_URL="172.31.6.60:8081"
        NEXUS_REPOSITORY="Star-Blog-release"
        NEXUS_REPO_ID="Star-Blog-release"
        NEXUS_CREDENTIALS_ID="nexus_login"

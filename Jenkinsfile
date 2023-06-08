@@ -6,7 +6,7 @@ pipeline{
        NEXUS_URL="172.31.6.60:8081"
        NEXUS_REPOSITORY="Star-Blog-release"
        NEXUS_REPO_ID="Star-Blog-release"
-       NEXUS_CREDENTIALS_ID="nexus_login"
+       NEXUS_LOGIN="nexus_login"
        SNAP_REPO="star-blog-snapshot"
        RELEASE_REPO="Star-Blog-release"
        CENTRAL_REPO="Star-Blog-maven-central"
@@ -17,11 +17,6 @@ pipeline{
      steps{
 	  sh 'mvn -s settings.xml -DskipTests install'
      }
-	 post{
-	  success{
-	   echo "=======build completed test======"
-	  }
-	 }
-   }  
-}
+   }
+  }
 }

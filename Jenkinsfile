@@ -13,12 +13,6 @@ pipeline{
        NEXUS_GRP_REPO="star-blog-maven-group"
         }
    stages{
-    stage('Fetch code'){
-     steps{
-	 git url:'https://github.com/yogiramsuratkumar/rr_projects.git', branch: 'rr_projects',
-	 credentialsId :"gitsec"
-     }
-   }
     stage('Build code'){
      steps{
 	  sh 'mvn -s settings.xml -DskipTests install'

@@ -34,7 +34,7 @@ pipeline{
          sh '''${scannerHome}/bin/sonar-scanner
          -Dsonar.projectName=FirstProject \
          -Dsonar.projectVersion= 1.0 \
-         -Dsonar.sources= /src \
+         -Dsonar.source= /src \
          -Dsonar.java.checkstyle.reportPaths=/target/checkstyle-result.xml'''
           }
       }

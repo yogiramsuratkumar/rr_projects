@@ -32,7 +32,7 @@ pipeline{
        steps{
          withSonarQubeEnv("${SONAR_SERVER}") {
          sh '''${scannerHome}/bin/sonar-scanner
-                 -Dproject.settings= sonar-project.properties
+                -Dproject.settings= sonar-project.properties'''
           }
       }
     }

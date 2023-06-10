@@ -11,7 +11,7 @@ pipeline{
        RELEASE_REPO="Star-Blog-release"
        CENTRAL_REPO="Star-Blog-maven-central"
        NEXUS_GRP_REPO="star-blog-maven-group"
-       SONAR_SERVER_URL="sonarqube"
+       SONAR_SERVER="sonarqube"
        SONAR_SCANNER="sonarscanner"
         }
    stages{
@@ -30,7 +30,7 @@ pipeline{
       scannerHome= tool "${SONAR_SCANNER}"
      }
        steps{
-         withSonarQubeEnv('SONAR_SCANNER') {
+         withSonarQubeEnv('${SONAR_SERVER}') {
          sh '''${scannerHome}/bin/sonar-scanner
          -Dsonar.projectKey=FirstProject \\
          -Dsonar.projectName=FirstProject \\

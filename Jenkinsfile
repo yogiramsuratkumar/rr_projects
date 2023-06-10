@@ -17,11 +17,9 @@ pipeline{
      steps{
 	  sh 'mvn -s settings.xml -DskipTests install'
      }
-     post{
-     success{
-         echo "all stages succeeded"
-     }
-     }
+   }
+   stage('Check Style analysis'){
+        sh "mvn checkstyle:checkstyle"
    }
   }
 }

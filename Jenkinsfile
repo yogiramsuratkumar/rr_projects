@@ -12,7 +12,8 @@ pipeline{
        CENTRAL_REPO="Star-Blog-maven-central"
        NEXUS_GRP_REPO="star-blog-maven-group"
        SONAR_SERVER="sonarqube"
-       SONAR_SCANNER="sonarscanner"        }
+       SONAR_SCANNER="sonarscanner"
+        }
    stages{
     stage('Build code'){
      steps{
@@ -31,7 +32,7 @@ pipeline{
        steps{
          withSonarQubeEnv("${SONAR_SERVER}") {
          sh '''${scannerHome}/bin/sonar-scanner
-         -Dsonar.java.checkstyle.reportPaths=/target/checkstyle-result.xml'''
+                 -Dproject.settings= sonar-project.properties
           }
       }
     }

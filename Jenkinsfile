@@ -32,7 +32,7 @@ pipeline{
        steps{
          withSonarQubeEnv("${SONAR_SERVER}") {
          sh '''${scannerHome}/bin/sonar-scanner
-         -Dsonar.projectKey=FirstProject \
+         -Dsonar.projectKey=com.ravi \
          -Dsonar.projectName=FirstProject \
          -Dsonar.projectVersion= 1.0 \
          -Dsonar.sources= /src \

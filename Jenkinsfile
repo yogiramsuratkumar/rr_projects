@@ -11,6 +11,8 @@ pipeline{
        RELEASE_REPO="Star-Blog-release"
        CENTRAL_REPO="Star-Blog-maven-central"
        NEXUS_GRP_REPO="star-blog-maven-group"
+       SONAR_SERVER_URL="sonarqube"
+       SONAR_SCANNER="sonarscanner"
         }
    stages{
     stage('Build code'){
@@ -23,5 +25,20 @@ pipeline{
         sh "mvn -s settings.xml checkstyle:checkstyle"
 		}
    }
+   stage(sonarqube report){
+     environment{
+      scannerHome= tool "${SONAR_SCANNER}"
+     }
+       steps{
+         withSonarQubeEnv('SONAR_SCANNER') {
+         sh '''${scannerHome}/bin/sonar-scanner
+         -Dsonar.projectKey=FirstProject \\
+         -Dsonar.projectName=FirstProject \\
+         -Dsonar.projectVersion= 1.0 \\
+         -Dsonar.sources= /src \\
+         -Dsonar.java.checkstyle.reportPaths=/target/checkstyle-result.xml'''
+          }
+      }
+    }
   }
 }

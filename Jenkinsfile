@@ -32,7 +32,11 @@ pipeline{
        steps{
          withSonarQubeEnv("${SONAR_SERVER}") {
          sh '''${scannerHome}/bin/sonar-scanner
-                -Dproject.settings= /var/lib/jenkins/workspace/dev-pipeline/sonar-project.properties'''
+         -Dsonar.projectKey=FirstProject \
+         -Dsonar.projectName=FirstProject \
+         -Dsonar.projectVersion= 1.0 \
+         -Dsonar.sources= /src \
+         -Dsonar.java.checkstyle.reportPaths=/target/checkstyle-result.xml'''
           }
       }
     }

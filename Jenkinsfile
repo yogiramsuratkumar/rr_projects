@@ -31,10 +31,9 @@ pipeline{
       project_Name = "FirstProject"
      }
        steps{
-         withSonarQubeEnv("${SONAR_SERVER}")
+         withSonarQubeEnv(installationName: 'sonarqube', credentialsId: 'sonarqube') {
          {
-         sh '''${scannerHome}/bin/sonar-scanner
-         -Dsonar.projectKey=$project_Name \
+         sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=$project_Name \
          -Dsonar.sources= /src \
          -Dsonar.java.checkstyle.reportPaths=/target/checkstyle-result.xml'''
           }

@@ -57,7 +57,7 @@ pipeline{
 				repository: "${RELEASE_REPO}",
 				credentialsId: "${NEXUS_LOGIN}",
 				artifacts: [
-					[artifactId: test,
+					[artifactId: first_app,
 					 classifier: "",
 					 file: "target/FirstProject.war",
 					 type: "war"]

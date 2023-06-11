@@ -28,7 +28,7 @@ pipeline{
    stage("sonarqube report"){
      environment{
       scannerHome= tool "${SONAR_SCANNER}"
-                }
+     }
        steps{
          withSonarQubeEnv("${SONAR_SERVER}") {
          sh '''${scannerHome}/bin/sonar-scanner
@@ -39,13 +39,16 @@ pipeline{
          -Dsonar.java.checkstyle.reportPaths=/target/checkstyle-result.xml \
          '''
           }
-       }
+      }
     }
+
 	stage("sonatr quality-gate check") {
             steps {
                 timeout(time: 1, unit: 'HOURS') {
                     waitForQualityGate abortPipeline: true
                 }
             }
-  }
+
+         }
+     }
 }

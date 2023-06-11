@@ -30,7 +30,7 @@ pipeline{
       scannerHome= tool "${SONAR_SCANNER}"
      }
        steps{
-         /* withSonarQubeEnv("${SONAR_SERVER}") {
+         withSonarQubeEnv("${SONAR_SERVER}") {
          sh '''${scannerHome}/bin/sonar-scanner
          -Dsonar.projectKey=FirstProject \
          -Dsonar.projectName=FirstProject \
@@ -38,8 +38,7 @@ pipeline{
          -Dsonar.sources= /src \
          -Dsonar.java.checkstyle.reportPaths=/target/checkstyle-result.xml \
          '''
-          } */
-          echo "sonar report succeeded"
+          }
       }
     }
 

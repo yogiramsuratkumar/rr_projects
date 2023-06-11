@@ -30,7 +30,8 @@ pipeline{
       scannerHome= tool "${SONAR_SCANNER}"
      }
        steps{
-         withSonarQubeEnv("${SONAR_SERVER}") {
+         withSonarQubeEnv(installationName: '${SONAR_SERVER}', credentialsId: '${SONAR_SERVER}')
+         {
          sh '''${scannerHome}/bin/sonar-scanner
          -Dsonar.projectKey=FirstProject \
          -Dsonar.projectName=FirstProject \
@@ -42,7 +43,7 @@ pipeline{
       }
     }
 
-	stage("sonatr quality-gate check") {
+	stage("sonar quality-gate check") {
             steps {
                 timeout(time: 1, unit: 'HOURS') {
                     waitForQualityGate abortPipeline: true

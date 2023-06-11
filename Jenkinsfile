@@ -25,7 +25,7 @@ pipeline{
         sh "mvn -s settings.xml checkstyle:checkstyle"
 		}
    }
-   /* stage("sonarqube report"){
+   stage("sonarqube report"){
      environment{
       scannerHome= tool "${SONAR_SCANNER}"
      }
@@ -40,7 +40,7 @@ pipeline{
          '''
           }
       }
-    } */
+    }
 
 	stage("sonatr quality-gate check") {
             steps {

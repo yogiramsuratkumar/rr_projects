@@ -18,33 +18,32 @@ pipeline{
     stage('Build code'){
      steps{
 	  sh 'mvn -s settings.xml -DskipTests install'
-     }
-   }
+      }
+    }
    stage('Check Style analysis'){
        steps{
         sh "mvn -s settings.xml checkstyle:checkstyle"
 		}
-   }
+    }
    stage("sonarqube report"){
      environment{
       scannerHome= tool "${SONAR_SCANNER}"
       project_Name = "FirstProject"
-     }
-       steps{
-         withSonarQubeEnv(installationName: 'sonarqube') {
-         sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=$project_Name \
-         -Dsonar.java.checkstyle.reportPaths=/target/checkstyle-result.xml'''
-          }
-      }
-    }
-
-	stage("sonar quality-gate check") {
-            steps {
-                timeout(time: 1, unit: 'HOURS') {
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-
          }
+       steps{
+         withSonarQubeEnv(installationName: 'sonarqube'){
+         sh '''${scannerHome}/bin/sonar-scanner
+               -Dsonar.projectKey=$project_Name \
+               -Dsonar.java.checkstyle.reportPaths=/target/checkstyle-result.xml'''
+            }
+        }
      }
+	stage("sonar quality-gate check"){
+            steps{
+                timeout(time: 1, unit: 'HOURS'){
+                    waitForQualityGate abortPipeline: true
+                     }
+             }
+       }
+   }
 }

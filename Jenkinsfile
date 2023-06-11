@@ -15,12 +15,12 @@ pipeline{
        SONAR_SCANNER="sonarscanner"
         }
    stages{
-    stage('Build code'){
+    stage("Build code"){
      steps{
-	  sh 'mvn -s settings.xml -DskipTests install'
+	  sh "mvn -s settings.xml -DskipTests install"
      }
    }
-   stage('Check Style analysis'){
+   stage("Check Style analysis"){
        steps{
         sh "mvn -s settings.xml checkstyle:checkstyle"
 		}
@@ -31,18 +31,38 @@ pipeline{
       project_Name = "FirstProject"
      }
        steps{
-         withSonarQubeEnv(installationName: 'sonarqube') {
-         sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=$project_Name \
-         -Dsonar.java.checkstyle.reportPaths=/target/checkstyle-result.xml'''
+         withSonarQubeEnv(installationName: "sonarqube") {
+         sh """${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=$project_Name \
+         -Dsonar.java.checkstyle.reportPaths=/target/checkstyle-result.xml"""
           }
       }
     }
 	stage("sonar quality-gate check") {
             steps {
-                timeout(time: 1, unit: 'HOURS') {
+                timeout(time: 1, unit: "HOURS") {
                     waitForQualityGate abortPipeline: true
                 }
             }
          }
-     }
-}
+
+     stage("upload artifact to nexus"){
+
+	       steps{
+				nexusArtifactUploader(
+				nexusVersion: "nexus3",
+				protocol: "http",
+				nexusUrl: "${NEXUS_URL}",
+				groupId: "dev",
+				version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
+				repository: "${RELEASE_REPO}",
+				credentialsId: "${NEXUS_LOGIN}",
+				artifacts: [
+					[artifactId: test,
+					 classifier: "",
+					 file: "target/FirstProject.war",
+					 type: "war"]
+                    ])
+                    }
+	            }
+         }
+  }

@@ -36,7 +36,8 @@ pipeline{
          -Dsonar.projectName=FirstProject \
          -Dsonar.projectVersion= 1.0 \
          -Dsonar.sources= /src \
-         -Dsonar.java.checkstyle.reportPaths=/target/checkstyle-result.xml'''
+         -Dsonar.java.checkstyle.reportPaths=/target/checkstyle-result.xml \
+         '''
           }
       }
     }

@@ -28,17 +28,15 @@ pipeline{
    stage("sonarqube report"){
      environment{
       scannerHome= tool "${SONAR_SCANNER}"
+      project_Name = "FirstProject"
      }
        steps{
-         withSonarQubeEnv(installationName: '${SONAR_SERVER}', credentialsId: '${SONAR_SERVER}')
+         withSonarQubeEnv("${SONAR_SERVER}")
          {
          sh '''${scannerHome}/bin/sonar-scanner
-         -Dsonar.projectKey=FirstProject \
-         -Dsonar.projectName=FirstProject \
-         -Dsonar.projectVersion= 1.0 \
+         -Dsonar.projectKey=$project_Name \
          -Dsonar.sources= /src \
-         -Dsonar.java.checkstyle.reportPaths=/target/checkstyle-result.xml \
-         '''
+         -Dsonar.java.checkstyle.reportPaths=/target/checkstyle-result.xml'''
           }
       }
     }

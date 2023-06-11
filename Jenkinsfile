@@ -32,7 +32,8 @@ pipeline{
        steps{
          withSonarQubeEnv("${SONAR_SERVER}") {
          sh '''${scannerHome}/bin/sonar-scanner
-         -Dsonar.java.checkstyle.reportPaths=/target/checkstyle-result.xml'''
+         -Dsonar.projectKey=FirstProject \
+         '''
           }
       }
     }

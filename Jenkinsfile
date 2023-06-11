@@ -31,9 +31,7 @@ pipeline{
      }
        steps{
          withSonarQubeEnv("${SONAR_SERVER}") {
-         sh '''${scannerHome}/bin/sonar-scanner
-          -Dproject.settings= /var/lib/jenkins/workspace/dev-pipeline/sonar-project.properties \
-         '''
+         sh '''${scannerHome}/bin/sonar-scanner '''
           }
       }
     }

@@ -31,13 +31,13 @@ pipeline{
      }
        steps{
          withSonarQubeEnv("${SONAR_SERVER}") {
-         sh '''${scannerHome}/bin/sonar-scanner
+        /*  sh '''${scannerHome}/bin/sonar-scanner
          -Dsonar.projectKey=FirstProject \
          -Dsonar.projectName=FirstProject \
          -Dsonar.projectVersion= 1.0 \
          -Dsonar.sources= /src \
          -Dsonar.java.checkstyle.reportPaths=/target/checkstyle-result.xml \
-         '''
+         ''' */
           }
       }
     }

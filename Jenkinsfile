@@ -17,7 +17,7 @@ pipeline{
 	   appRegistry="628858077541.dkr.ecr.ap-south-1.amazonaws.com/firstapp_image"
 	   firstAppRegistry="https://628858077541.dkr.ecr.ap-south-1.amazonaws.com"
         }
-
+   stages{
 		stage("build docker images"){
 		 steps{
 		    script{

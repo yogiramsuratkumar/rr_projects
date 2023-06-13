@@ -4,7 +4,6 @@ pipeline{
        NEXUS_VERSION= "3.54.1-01"
        NEXUS_PROTOCOL= "http"
        NEXUS_IP="172.31.6.60"
-       NEXUSPORT="8081"
        NEXUS_REPOSITORY="Star-Blog-release"
        NEXUS_REPO_ID="Star-Blog-release"
        NEXUS_LOGIN="nexus_login"

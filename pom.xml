@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.example</groupId>
   <artifactId>FirstProject</artifactId>
@@ -29,7 +29,7 @@
   <repositories>
     <repository>
       <id>${NEXUS_GRP_REPO}</id>
-      <url>http://${NEXUS_IP}:8081/repository/${NEXUS_GRP_REPO}/</url>
+      <url>http://${NEXUS_URL}/repository/${NEXUS_GRP_REPO}/</url>
     </repository>
   </repositories>
 

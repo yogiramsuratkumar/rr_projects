@@ -13,27 +13,72 @@ pipeline{
        NEXUS_GRP_REPO="star-blog-maven-group"
        SONAR_SERVER="sonarqube"
        SONAR_SCANNER="sonarscanner"
-	   REGISTRYCRED="ecr:ap-south-1:aws_creds"
-	   APPREGISTRY="628858077541.dkr.ecr.ap-south-1.amazonaws.com/firstapp_image"
-	   FIRSTAPPREGISTRY="https://628858077541.dkr.ecr.ap-south-1.amazonaws.com"
         }
    stages{
-		stage("build docker images"){
-		 steps{
-		    script{
+     stage("Build code"){
+       steps{
+	   sh "mvn -s settings.xml -DskipTests install"
+     }
+   }
+     stage("Check Style analysis"){
+	   steps{
+		sh "mvn -s settings.xml checkstyle:checkstyle"
+		}
+        }
+     stage("sonarqube report"){
+		 environment{
+		  scannerHome= tool "${SONAR_SCANNER}"
+		  project_Name = "FirstProject"
+		 }
+		   steps{
+			 withSonarQubeEnv(installationName: "sonarqube") {
+			 sh """${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=$project_Name \
+			 -Dsonar.java.checkstyle.reportPaths=/target/checkstyle-result.xml"""
+			  }
+		  }
+        }
+	 stage("sonar quality-gate check") {
+		steps {
+			timeout(time: 1, unit: "HOURS") {
+				waitForQualityGate abortPipeline: true
+			}
+		}
+         }
+
+     stage("upload artifact to nexus"){
+	   steps{
+			nexusArtifactUploader(
+			nexusVersion: "nexus3",
+			protocol: "http",
+			nexusUrl: "${NEXUS_URL}",
+			groupId: "dev",
+			version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
+			repository: "${RELEASE_REPO}",
+			credentialsId: "${NEXUS_LOGIN}",
+			artifacts: [
+				[artifactId: "first_app",
+				 classifier: "",
+				 file: "target/FirstProject.war",
+				 type: "war"]
+				])
+				}
+			}
+	 stage("build docker images"){
+		steps{
+			script{
 			dockerImage=docker.build( APPREGISTRY + ":$BUILD_NUMBER","./Docker-files/app/")
 			}
-		 }
+		  }
 		}
-       stage("push app image"){
-	   steps{
-	        script{
+	 stage("push app image"){
+		steps{
+			script{
 			  docker.withRegistry(FIRSTAPPREGISTRY,REGISTRYCRED){
-			    dockerImage.push("$BUILD_NUMBER")
+				dockerImage.push("$BUILD_NUMBER")
 				dockerImage.push("latest")
 			  }
 			}
-	      }
-	   }
+        }
      }
-  }
+   }
+ }

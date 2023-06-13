@@ -13,7 +13,6 @@
     <maven.compiler.target>1.6</maven.compiler.target>
   </properties>
 
-
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -25,4 +24,5 @@
   <build>
     <finalName>FirstProject</finalName>
   </build>
+
 </project>

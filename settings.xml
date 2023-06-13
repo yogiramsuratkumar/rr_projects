@@ -26,11 +26,4 @@
         <finalName>FirstProject</finalName>
     </build>
 
-    <!--<repositories>
-        <repository>
-            <id>${NEXUS-GRP-REPO}</id>
-            <url>http://${NEXUS_URL}/repository/${NEXUS-GRP-REPO}/</url>
-        </repository>
-    </repositories>-->
-
 </project>

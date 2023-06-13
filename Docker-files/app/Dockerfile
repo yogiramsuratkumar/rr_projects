@@ -5,6 +5,6 @@ RUN  cd rr_projects && mvn install
 
 FROM tomcat
 RUN  rm -rf /usr/local/tomcat/webapps/*
-COPY  --from=BUILD_IMAGE  rr_projects/taget/FirstProject.war /usr/local/tomcat/webapps/ROOT.war
+COPY  --from=BUILD_IMAGE  rr_projects/target/FirstProject.war /usr/local/tomcat/webapps/ROOT.war
 EXPOSE 8080
 CMD ["catalina.sh","run"]

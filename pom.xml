@@ -26,11 +26,11 @@
     <finalName>FirstProject</finalName>
   </build>
 
-  <repositories>
+  <!--<repositories>
     <repository>
       <id>${NEXUS_GRP_REPO}</id>
       <url> http://172.31.6.60:8081/repository/star-blog-maven-group/</url>
     </repository>
-  </repositories>
+  </repositories>-->
 
 </project>

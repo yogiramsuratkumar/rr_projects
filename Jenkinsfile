@@ -29,8 +29,8 @@ pipeline{
 	   steps{
 	        script{
 			  docker.withRegistry(FIRSTAPPREGISTRY,REGISTRYCRED){
-			    docker.push("BUILD_NUMBER")
-				docker.push("latest")
+			    dockerImage.push("$BUILD_NUMBER")
+				dockerImage.push("latest")
 			  }
 			}
 	      }

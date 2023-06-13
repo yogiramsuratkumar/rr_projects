@@ -10,6 +10,7 @@ pipeline{
        SNAP_REPO="star-blog-snapshot"
        RELEASE_REPO="Star-Blog-release"
        CENTRAL_REPO="Star-Blog-maven-central"
+
        NEXUS_GRP_REPO="star-blog-maven-group"
        SONAR_SERVER="sonarqube"
        SONAR_SCANNER="sonarscanner"

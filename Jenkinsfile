@@ -13,6 +13,9 @@ pipeline{
        NEXUS_GRP_REPO="star-blog-maven-group"
        SONAR_SERVER="sonarqube"
        SONAR_SCANNER="sonarscanner"
+       REGISTRY_CRED="ecr:ap-south-1:aws_creds"
+       APP_REGISTRY="628858077541.dkr.ecr.ap-south-1.amazonaws.com/firstapp_image"
+       FIRSTAPP_REGISTRY="https://628858077541.dkr.ecr.ap-south-1.amazonaws.com"
         }
    stages{
      stage("Build code"){
@@ -66,14 +69,14 @@ pipeline{
 	 stage("build docker images"){
 		steps{
 			script{
-			  dockerImage=docker.build( APPREGISTRY + ":$BUILD_NUMBER","./Docker-files/app/")
+			  dockerImage=docker.build( APP_REGISTRY + ":$BUILD_NUMBER","./Docker-files/app/")
 			}
 		  }
 		}
 	 stage("push app image"){
 		steps{
 			script{
-			  docker.withRegistry(FIRSTAPPREGISTRY,REGISTRYCRED){
+			  docker.withRegistry(FIRSTAPP_REGISTRY,REGISTRY_CRED){
 				dockerImage.push("$BUILD_NUMBER")
 				dockerImage.push("latest")
 			  }

@@ -3,14 +3,14 @@ pipeline{
     environment{
        NEXUS_VERSION= "3.54.1-01"
        NEXUS_PROTOCOL= "http"
-       NEXUS_URL="172.31.6.60:8081"
+       NEXUS_IP="172.31.6.60"
+       NEXUS_PORT="8081"
        NEXUS_REPOSITORY="Star-Blog-release"
        NEXUS_REPO_ID="Star-Blog-release"
        NEXUS_LOGIN="nexus_login"
        SNAP_REPO="star-blog-snapshot"
        RELEASE_REPO="Star-Blog-release"
        CENTRAL_REPO="Star-Blog-maven-central"
-
        NEXUS_GRP_REPO="star-blog-maven-group"
        SONAR_SERVER="sonarqube"
        SONAR_SCANNER="sonarscanner"

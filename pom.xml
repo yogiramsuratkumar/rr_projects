@@ -29,7 +29,7 @@
   <repositories>
     <repository>
       <id>${NEXUS_GRP_REPO}</id>
-      <url>http://${NEXUS_URL}/repository/${NEXUS_GRP_REPO}/</url>
+      <url>http://${NEXUS_IP}:${NEXUS_PORT}/repository/${NEXUS_GRP_REPO}/</url>
     </repository>
   </repositories>
 

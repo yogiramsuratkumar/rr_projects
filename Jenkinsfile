@@ -4,7 +4,7 @@ pipeline{
        NEXUS_VERSION= "3.54.1-01"
        NEXUS_PROTOCOL= "http"
        NEXUS_IP="172.31.6.60"
-       NEXUS_PORT="8081"
+       NEXUSPORT="8081"
        NEXUS_REPOSITORY="Star-Blog-release"
        NEXUS_REPO_ID="Star-Blog-release"
        NEXUS_LOGIN="nexus_login"
@@ -55,7 +55,7 @@ pipeline{
 				nexusArtifactUploader(
 				nexusVersion: "nexus3",
 				protocol: "http",
-				nexusUrl: "${NEXUS_IP}:${NEXUS_PORT}",
+				nexusUrl: "${NEXUS_IP}:${NEXUSPORT}",
 				groupId: "dev",
 				version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
 				repository: "${RELEASE_REPO}",

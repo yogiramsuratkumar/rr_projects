@@ -16,6 +16,8 @@ pipeline{
        REGISTRY_CRED="ecr:ap-south-1:aws_creds"
        APP_REGISTRY="628858077541.dkr.ecr.ap-south-1.amazonaws.com/firstapp_image"
        FIRSTAPP_REGISTRY="https://628858077541.dkr.ecr.ap-south-1.amazonaws.com"
+	   CLUSTER="DevEcsCluster"
+	   SERVICE="firstappsvc"
         }
    stages{
      stage("Build code"){
@@ -80,6 +82,16 @@ pipeline{
 				dockerImage.push("$BUILD_NUMBER")
 				dockerImage.push("latest")
 			  }
+			}
+        }
+     }
+	 stage("deploy to ECS clusetr"){
+		steps{
+
+		withAWS(credentials: "aws_creds", region: "ap-south-1"){
+
+		   sh "aws ecs update-service  --cluster ${CLUSTER} --service ${SERVICE} --force-new-deployment"
+		     }
 			}
         }
      }

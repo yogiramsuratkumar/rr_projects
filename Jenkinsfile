@@ -91,7 +91,7 @@ pipeline{
 		withAWS(credentials: "aws_creds", region: "ap-south-1"){
 
 		   sh "aws ecs update-service  --cluster ${CLUSTER} --service ${SERVICE} --force-new-deployment"
-		     }
+
 			}
         }
      }

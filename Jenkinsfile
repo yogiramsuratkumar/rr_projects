@@ -17,7 +17,7 @@ pipeline{
        APP_REGISTRY="628858077541.dkr.ecr.ap-south-1.amazonaws.com/firstapp_image"
        FIRSTAPP_REGISTRY="https://628858077541.dkr.ecr.ap-south-1.amazonaws.com"
 	   CLUSTER="DevEcsCluster"
-	   SERVICE="firstappsvc"
+	   SERVICE="FirstAppSvc"
         }
    stages{
      stage("Build code"){

@@ -44,7 +44,6 @@ pipeline{
                 }
             }
          }
-
      stage("upload artifact to nexus"){
 
 	       steps{

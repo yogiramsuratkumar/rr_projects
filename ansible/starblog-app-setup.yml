@@ -37,11 +37,6 @@
           tags:
             - deploy
 
-        - name: copy ROOT dir with old_ROOT name
-          shell: cp -r ROOT old_ROOT
-          args:
-            chdir: /usr/local/tomcat9/webapps/
-
         - name: Delete current artifact
           file:
             path: "{{item}}"
@@ -54,19 +49,13 @@
             - deploy
 
         - name: Try deploy artifact else restore from previos old_ROOT
-          block:
-            - name: Deploy star-blog artifact
-              copy:
-                src: "/tmp/star_blog-{{star_blog_version}}"
-                dest: /usr/local/tomcat9/webapps/ROOT.war
-                remote_src: yes
-              register: deploy_info
-              tags:
-                - deploy
-          rescue:
-            - shell: cp -r old_ROOT ROOT
-              args:
-                chdir: /usr/local/tomcat9/webapps/
+          copy:
+            src: "/tmp/star_blog-{{star_blog_version}}"
+            dest: /usr/local/tomcat9/webapps/ROOT.war
+            remote_src: yes
+          register: deploy_info
+          tags:
+            - deploy
 
       rescue:
         - name: Start tomcat svc
@@ -78,9 +67,6 @@
       service:
         name: tomcat
         state: started
-      when: deploy_info.changed
-      tags:
-        - deploy
 
     - name: Wait until ROOT.war is extracted to ROOT directory
       wait_for:

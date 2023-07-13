@@ -55,7 +55,7 @@
 
         - name: Try deploy artifact else restore from previos old_ROOT
           block:
-            - name: Deploy vprofile artifact
+            - name: Deploy star-blog artifact
               copy:
                 src: "/tmp/star_blog-{{star_blog_version}}"
                 dest: /usr/local/tomcat9/webapps/ROOT.war

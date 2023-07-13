@@ -48,8 +48,8 @@
             state: absent
           when: archive_info.changed
           loop:
-            - /usr/local/tomcat8/webapps/ROOT
-            - /usr/local/tomcat8/webapps/ROOT.war
+            - /usr/local/tomcat9/webapps/ROOT
+            - /usr/local/tomcat9/webapps/ROOT.war
           tags:
             - deploy
 

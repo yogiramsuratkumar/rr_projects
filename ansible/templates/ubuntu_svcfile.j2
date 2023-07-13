@@ -5,11 +5,10 @@ After=network.target
 [Service]
 User=tomcat
 WorkingDirectory=/usr/local/tomcat9
-Environment=JRE_HOME=/usr/lib/jvm/java-11-openjdk-amd64/jre
-Environment=JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/jre
+Environment=JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 Environment=CATALINA_HOME=/usr/local/tomcat9
 Environment=CATALINE_BASE=/usr/local/tomcat9
-ExecStart=/usr/local/tomcat9/bin/catalina.sh run
+ExecStart=/usr/local/tomcat9/bin/startup.sh
 ExecStop=/usr/local/tomcat9/bin/shutdown.sh
 SyslogIdentifier=tomcat-%i
 

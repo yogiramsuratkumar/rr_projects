@@ -65,6 +65,6 @@
 
     - name: start the tomcat9
       service:
-        name: tomcat
+        name: tomcat9
         state: started
         enabled: yes

@@ -67,6 +67,7 @@
               unarchive:
                 src: /usr/local/tomcat9/webapps/ROOT.war
                 dest: /usr/local/tomcat9/webapps/ROOT
+                remote_src: yes
           rescue:
             - shell: cp -r old_ROOT ROOT
               args:

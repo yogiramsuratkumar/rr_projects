@@ -52,8 +52,8 @@
         recurse: yes
     - name: setup tomcat svc file on ubuntu
       template:
-        src:  templates/ubuntu_svcfile.j2
-        dest: /etc/systemd/system/tomcat.service
+        src:  templates/tomcat.service
+        dest: /etc/systemd/system/
         mode: 0755
       when: ansible_distribution == "ubuntu"
 

@@ -42,17 +42,6 @@
           args:
             chdir: /usr/local/tomcat9/webapps/
 
-        - name: Delete current artifact
-          file:
-            path: "{{item}}"
-            state: absent
-          when: archive_info.changed
-          loop:
-            - /usr/local/tomcat9/webapps/ROOT
-            - /usr/local/tomcat9/webapps/ROOT.war
-          tags:
-            - deploy
-
         - name: Try deploy artifact else restore from previos old_ROOT
           block:
             - name: Deploy star-blog artifact

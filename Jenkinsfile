@@ -76,7 +76,7 @@ pipeline{
 						    artifactid:"first_app",
 							build_no:"${env.BUILD_ID}",
 							time:"${env.BUILD_TIMESTAMP}",
-							star_blog_version:"star_blog-${env.BUILD_ID}-${env.BUILD_TIMESTAMP}.war"
+							star_blog_version:"first_app-${env.BUILD_ID}-${env.BUILD_TIMESTAMP}.war"
                                 ])
 		               }
 		         }

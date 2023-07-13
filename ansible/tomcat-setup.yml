@@ -54,8 +54,7 @@
       template:
         src:  templates/tomcat.service
         dest: /etc/systemd/system/
-        mode: 0755
-      when: ansible_distribution == "ubuntu"
+        mode: "a+x"
 
     - name: Start and enable Tomcat service
       systemd:

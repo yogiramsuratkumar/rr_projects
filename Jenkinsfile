@@ -69,7 +69,7 @@ pipeline{
                   		 playbook:  'ansible/site.yml',colorized: true,disableHostKeyChecking: true,
 						 extraVars: [
 						    USER:"admin",
-						    PASS:"${NEXUS_PWD}",
+						    PASS:'${NEXUS_PWD}',
 						    nexusip:"172.31.6.60",
 						    reponame:"Star-Blog-release",
 						    groupid:"dev",

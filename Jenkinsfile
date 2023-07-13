@@ -68,7 +68,7 @@ pipeline{
 		    ansiblePlaybook(credentialsId: 'stage_server_login',inventory: 'ansible/stage.inventory',
                   		 playbook:  'ansible/site.yml',colorized: true,disableHostKeyChecking: true,
 						 extraVars: [
-						    USER:"ADMIN",
+						    USER:"admin",
 						    PASS:"${NEXUS_PWD}",
 						    nexusip:"172.31.6.60",
 						    reponame:"Star-Blog-release",

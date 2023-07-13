@@ -61,11 +61,10 @@
     - name: reload the systemd to re-read  configurations
       systemd:
         daemon_reload: yes
-      when: ansible_distribution == 'ubuntu'
 
     - name: start the tomcat9
-      command: "nohup /usr/local/tomcat9/bin/startup.sh"
-      tags: startTomcat
-
-
+      service:
+        name: tomcat
+        state: started
+        enabled: yes
 

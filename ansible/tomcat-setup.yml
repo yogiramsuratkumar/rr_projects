@@ -64,9 +64,8 @@
       when: ansible_distribution == 'ubuntu'
 
     - name: start the tomcat9
-      systemd:
-        name: tomcat
-        state: started
-        daemon_reload: true
+      command: "nohup /usr/local/tomcat9/bin/startup.sh"
+      tags: startTomcat
+
 
 

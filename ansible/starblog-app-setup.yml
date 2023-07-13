@@ -63,6 +63,10 @@
               register: deploy_info
               tags:
                 - deploy
+            - name: Extract ROOT.war into ROOT
+              unarchive:
+                src: /usr/local/tomcat9/webapps/ROOT.war
+                dest: /usr/local/tomcat9/webapps/ROOT
           rescue:
             - shell: cp -r old_ROOT ROOT
               args:
@@ -79,11 +83,5 @@
         name: tomcat
         state: started
       when: deploy_info.changed
-      tags:
-        - deploy
-
-    - name: Wait until ROOT.war is extracted to ROOT directory
-      wait_for:
-        path: /usr/local/tomcat9/webapps/ROOT
       tags:
         - deploy

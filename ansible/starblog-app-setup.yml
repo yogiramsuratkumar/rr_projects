@@ -28,9 +28,3 @@
       service:
         name: tomcat
         state: started
-
-    - name: Wait until ROOT.war is extracted to ROOT directory
-      wait_for:
-        path: /usr/local/tomcat9/webapps/ROOT
-      tags:
-        - deploy

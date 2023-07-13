@@ -9,7 +9,6 @@
         name:  openjdk-11-jdk
         state: present
         update_cache: yes
-      when: ansible_distribution == "ubuntu"
 
     - name: download tomcat tar file
       get_url:

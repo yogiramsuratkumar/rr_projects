@@ -48,14 +48,14 @@
             state: absent
           when: archive_info.changed
           loop:
-            - /usr/local/tomcat9/webapps/ROOT/
+            - /usr/local/tomcat9/webapps/ROOT
             - /usr/local/tomcat9/webapps/ROOT.war
           tags:
             - deploy
 
         - name: Try deploy artifact else restore from previos old_ROOT
           block:
-            - name: Deploy star-blog artifact
+            - name: Deploy vprofile artifact
               copy:
                 src: "/tmp/star_blog-{{star_blog_version}}"
                 dest: /usr/local/tomcat9/webapps/ROOT.war
@@ -63,11 +63,6 @@
               register: deploy_info
               tags:
                 - deploy
-            - name: Extract ROOT.war into ROOT
-              unarchive:
-                src: /usr/local/tomcat9/webapps/ROOT.war
-                dest: /usr/local/tomcat9/webapps
-                remote_src: yes
           rescue:
             - shell: cp -r old_ROOT ROOT
               args:
@@ -84,5 +79,11 @@
         name: tomcat
         state: started
       when: deploy_info.changed
+      tags:
+        - deploy
+
+    - name: Wait until ROOT.war is extracted to ROOT directory
+      wait_for:
+        path: /usr/local/tomcat9/webapps/ROOT
       tags:
         - deploy

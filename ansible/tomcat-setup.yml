@@ -64,7 +64,9 @@
       when: ansible_distribution == 'ubuntu'
 
     - name: start the tomcat9
-      service:
-        name: tomcat9
+      systemd:
+        name: tomcat
         state: started
-        enabled: yes
+        daemon_reload: true
+
+

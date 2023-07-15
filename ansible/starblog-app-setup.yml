@@ -21,10 +21,10 @@
         mode: 0744
         remote_src: yes
       notify:
-        - Extract to WAR to ROOT
+        - Extract WAR to ROOT
         - Restart Tomcat
   handlers:
-    - name: Extract  WAR to ROOT
+    - name: Extract WAR to ROOT
       command: unzip -o /usr/local/tomcat9/webapps/ROOT.war -d  /usr/local/tomcat9/webapps/ROOT/
     - name: Restart Tomcat
       command :   /usr/local/tomcat9/bin/startup.sh

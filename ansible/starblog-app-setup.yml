@@ -23,7 +23,7 @@
     - name: Restart Tomcat
       service:
         name: tomcat
-        state: Restarted
+        state: restarted
 
 
 

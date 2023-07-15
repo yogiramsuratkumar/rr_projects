@@ -1,6 +1,6 @@
 - name:  Tool setup in all machines
   hosts: appserver_grp
-  become: yes
+  become: true
   vars:
     tomcat_url: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.76/bin/apache-tomcat-9.0.76.tar.gz
   tasks:

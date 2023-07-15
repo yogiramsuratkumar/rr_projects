@@ -16,6 +16,9 @@
       copy:
         src: "/tmp/star_blog-{{star_blog_version}}"
         dest: "/usr/local/tomcat9/webapps/"
+        owner: tomcat
+        group: tomcat
+        mode: 777
         remote_src: yes
       notify:
         - Restart Tomcat

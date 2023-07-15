@@ -24,12 +24,10 @@
         - Extract to WAR to ROOT
         - Restart Tomcat
   handlers:
-    - name: Extract to WAR to ROOT
+    - name: Extract  WAR to ROOT
       command: unzip -o /usr/local/tomcat9/webapps/ROOT.war -d  /usr/local/tomcat9/webapps/ROOT/
     - name: Restart Tomcat
-      service:
-        name: tomcat
-        state: restarted
+      command :   /usr/local/tomcat9/bin/startup.sh
 
 
 

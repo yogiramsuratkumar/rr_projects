@@ -14,10 +14,6 @@ ExecStart=/usr/local/tomcat9/bin/startup.sh
 ExecStop=/usr/local/tomcat9/bin/shutdown.sh
 SyslogIdentifier=tomcat-%i
 
-User=tomcat
-Group=tomcat
-RestartSec=10
-Restart=always
 
 [Install]
 WantedBy=multi-user.target

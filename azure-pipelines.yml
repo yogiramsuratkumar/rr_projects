@@ -1,0 +1,19 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UseJavaVersion@1
+  inputs:
+    version: '11'
+
+- script: |
+    ./mvnw package --file pom.xml
+  displayName: 'Maven package'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: './target/*.jar'
+    ArtifactName: 'drop'

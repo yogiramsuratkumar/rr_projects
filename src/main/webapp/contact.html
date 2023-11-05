@@ -1,0 +1,341 @@
+<html>
+<header class="header">
+  <h1 class="title"></h1>
+  <p class="description"></p>
+</header>
+
+<button class="button-50" role="button" onclick="history.back()"><b>Go to Home</b></button>
+
+<button class="btn" type="button">
+  <strong><h3>Rocking Ravi</h3></strong>
+  <div id="container-stars">
+    <div id="stars"></div>
+  </div>
+
+  <div id="glow">
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+</button>
+
+<section class="tribute">
+  <blockquote>"Two things are important in life,
+    One is renunciation The Second is responsibility" </blockquote>
+  <img src="./assets/images/hero2.png" class="hero-img">
+</section>
+
+<section class="bio">
+  <h2>Biography</h2>
+  <p>
+    Ravi Kumar K is an indian reformer, software engineer, indian actor, filmmaker.
+    He is the founder, chairman , and CEO of " Telugu Nela Party "; He is born and brought up in Guntur district and
+    later name as Palnadu district. From 2030 the world started calling him <b>Rocking Ravi</b>
+  </p>
+  <hr />
+</section>
+</html>
+
+<style>
+
+  * {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Times, serif;
+  color: white;
+  background-color: black;
+}
+
+.container {
+  max-width: 90rem;
+  margin: 2rem auto;
+  padding: 0px 2rem;
+}
+
+.header {
+  padding: 2rem;
+  margin: 1rem 0px;
+  text-align: center;
+}
+
+header > .title {
+  margin-bottom: 1rem;
+}
+
+.tribute {
+  display: grid;
+  grid-template-columns: 3fr 2.0fr;
+  max-width:  80rem;
+  margin: -68px auto;
+  background: black;
+  color:  white;
+  align-items: top;
+  padding:0px 3px 1px 15rem;
+  height: 347px;
+}
+
+.tribute blockquote {
+  text-align: absolute;
+  font-size: 3rem;
+  margin: 60px -200px;
+  }
+
+.tribute img {
+  max-width: 60%;
+}
+
+.bio {
+  margin: 8rem auto;
+  padding: 5px -1rem;
+  max-width: 50rem;
+  margin:72px 150px;
+  height: 409px;
+
+}
+
+.bio > h2 {
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  line-height:  1;
+}
+.bio > p {
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+
+.bio > hr {
+  margin-top: 1rem;
+}
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 13rem;
+  height: 2.1rem;
+  background-size: 300% 300%;
+  backdrop-filter: blur(1rem);
+  border-radius: 0rem;
+  transition: 0.5s;
+  animation: gradient_301 5s ease infinite;
+  border: double 2px transparent;
+  background-image: linear-gradient(#48C9B0, #212121),  linear-gradient(137.48deg, #EC7063 10%,#EC7063 45%, #8F51EA 67%, #0044ff 87%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  padding: 280px 10px;
+  margin:10px 70px;
+  position:absolute;
+  top: 50px;
+  right: 10;
+  left: 1161;
+
+}
+
+#container-stars {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: 0.5s;
+  backdrop-filter: blur(1rem);
+  border-radius: 0rem;
+}
+
+strong {
+  z-index: 7;
+  'font-family: fantasy;'
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #FDFEFE;
+  text-shadow: 0 0 4px white;
+}
+
+#glow {
+  position: absolute;
+  display: flex;
+  width: 12rem;
+}
+
+.circle {
+  width: 95%;
+  height: 30px;
+  filter: blur(2rem);
+  animation: pulse_3011 4s infinite;
+  z-index: -1;
+}
+
+.circle:nth-of-type(1) {
+  background: rgba(254, 83, 186, 0.636);
+}
+
+.circle:nth-of-type(2) {
+  background: rgba(142, 81, 234, 0.704);
+}
+
+.btn:hover #container-stars {
+  z-index: 1;
+  background-color: #212121;
+}
+
+.btn:hover {
+  transform: scale(1.1)
+}
+
+.btn:active {
+  border: double 4px #FE53BB;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  animation: none;
+}
+
+.btn:active .circle {
+  background: #FE53BB;
+}
+
+#stars {
+  position: relative;
+  background: transparent;
+  width: 200rem;
+  height: 200rem;
+}
+
+#stars::after {
+  content: "";
+  position: absolute;
+  top: -10rem;
+  left: -100rem;
+  width: 100%;
+  height: 100%;
+  animation: animStarRotate 90s linear infinite;
+}
+
+#stars::after {
+  background-image: radial-gradient(#ffffff 1px, transparent 1%);
+  background-size: 50px 50px;
+}
+
+#stars::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 170%;
+  height: 500%;
+  animation: animStar 60s linear infinite;
+}
+
+#stars::before {
+  background-image: radial-gradient(#ffffff 1px, transparent 1%);
+  background-size: 50px 50px;
+  opacity: 0.5;
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-135rem);
+  }
+}
+
+@keyframes animStarRotate {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0);
+  }
+}
+
+@keyframes gradient_301 {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse_3011 {
+  0% {
+    transform: scale(0.75);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    transform: scale(0.75);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+/* CSS */
+.button-50 {
+  appearance: button;
+  background-color: #000;
+  background-image: none;
+  border: 1px solid #000;
+  border-radius: 3px;
+  box-shadow: #F81E1A 3px 3px 0 0,#000 3px 3px 0 1px;
+  box-sizing: 10px;
+  color: #FFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: ITCAvantGardeStd-Bk,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 5px;
+  margin: 0 1px 10px 0;
+  overflow: visible;
+  padding: 2px 10px;
+  text-align: center;
+  text-transform: none;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: right;
+  white-space: nowrap;
+  position:absolute;
+  top: 72.5px;
+  left: 20;
+}
+
+.button-50:focus {
+  text-decoration: none;
+}
+
+.button-50:hover {
+  text-decoration: none;
+}
+
+.button-50:active {
+  box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
+  outline: 0;
+}
+
+.button-50:not([disabled]):active {
+  box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .button-50 {
+    padding: 12px 10px;
+  }
+}
+</style>

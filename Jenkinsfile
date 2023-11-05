@@ -13,6 +13,7 @@ pipeline{
        NEXUS_GRP_REPO="star-blog-maven-group"
        SONAR_SERVER="sonarqube"
        SONAR_SCANNER="sonarscanner"
+	   NEXUS_PWD = credentials("nexus_pwd")
         }
    stages{
     stage("Build code"){
@@ -62,5 +63,22 @@ pipeline{
                     ])
                     }
 	            }
-         }
-  }
+	 stage("deploy to stage by ansible"){
+        steps{
+		    ansiblePlaybook(credentialsId: 'stage_server_login',inventory: 'ansible/stage.inventory',
+                  		 playbook:  'ansible/site.yml',colorized: true,disableHostKeyChecking: true,
+						 extraVars: [
+						    USER:"admin",
+						    PASS:'${NEXUS_PWD}',
+						    nexusip:"172.31.6.60",
+						    reponame:"Star-Blog-release",
+						    groupid:"dev",
+						    artifactid:"first_app",
+							build_no:"${env.BUILD_ID}",
+							time:"${env.BUILD_TIMESTAMP}",
+							star_blog_version:"first_app-${env.BUILD_ID}-${env.BUILD_TIMESTAMP}.war"
+                                ])
+		               }
+		         }
+            }
+      }

@@ -1,0 +1,65 @@
+- name:  Tool setup in all machines
+  hosts: appserver_grp
+  become: true
+  vars:
+    tomcat_url: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.76/bin/apache-tomcat-9.0.76.tar.gz
+  tasks:
+    - name: install jdk on ubuntu 20
+      apt:
+        name:  openjdk-11-jdk
+        state: present
+        update_cache: yes
+
+    - name: download tomcat tar file
+      get_url:
+        url: "{{tomcat_url}}"
+        dest: /tmp/apache-tomcat-9.0.76.tar.gz
+
+    - name: add tomcat group
+      group:
+        name: tomcat
+        state: present
+
+    - name: add tomcat user
+      user:
+        name: tomcat
+        group: tomcat
+        shell: /bin/login
+        home: /usr/local/tomcat9
+    -  file:
+         path: /tmp/tomcat9
+         state: directory
+
+    - name: extract tomcat
+      unarchive:
+        src: /tmp/apache-tomcat-9.0.76.tar.gz
+        dest: /tmp/tomcat9
+        remote_src: yes
+        list_files: yes
+      register: unarchive_info
+
+    - name: Synchronize  /tmp/tomcat9/directory /usr/local/tomcat9
+      synchronize:
+        src: "/tmp/tomcat9/{{unarchive_info.files[0].split('/')[0]}}/"
+        dest: /usr/local/tomcat9
+      delegate_to: "{{inventory_hostname}}"
+
+    - name: change owner of /usr/local/tomcat9
+      file:
+        path: /usr/local/tomcat9
+        owner: tomcat
+        group: tomcat
+        recurse: yes
+    - name: setup tomcat svc file on ubuntu
+      template:
+        src:  templates/tomcat.service.j2
+        dest: /etc/systemd/system/tomcat.service
+        mode: "a+x"
+
+    - name: Start and enable Tomcat service
+      systemd:
+        name: tomcat
+        state: started
+        enabled: true
+        daemon_reload: yes
+

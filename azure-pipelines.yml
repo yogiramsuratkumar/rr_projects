@@ -4,16 +4,24 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- task: UseJavaVersion@1
-  inputs:
-    version: '8'
+stages:
+- stage: BuildAndDeploy
+  displayName: Build and Deploy Stage
+  jobs:
+  - job: MavenPackageAndDeployJar
+    displayName: Build and Deploy job¯
 
-- script: |
-    ./mvnw package --file pom.xml
-  displayName: 'Maven package'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: './target/*.jar'
-    ArtifactName: 'blog_app'
+    steps:
+    - task: Maven@3
+      displayName: 'maven build'
+      inputs:
+        mavenPomFile: 'pom.xml' 
+        goals: 'package'
+    - task: CopyFilesOverSSH@0
+      displayName: copy jar to tomcat
+      inputs:
+        sshEndpoint: 'dev-server-connection'
+        SourceFolder: '$(System.DefaultWorkingDirectory)/target/'
+        Contents: '*.war'
+        TargetFolder: '/var/lib/tomcat9/webapps/'
+        OverWrite: true
